@@ -69,7 +69,9 @@ function ProgressBar({ value, tier }: { value: number; tier: string }) {
 
 export default function PlayerPage() {
   const { username } = useParams<{ username: string }>();
-  const { data, isLoading, isError } = useGetPlayer(username!);
+  const { data, isLoading, isError } = useGetPlayer(username!, {
+    query: { queryKey: getGetPlayerQueryKey(username!), enabled: !!username },
+  });
 
   const header = (
     <header className="glass-header sticky top-0 z-20">
@@ -82,7 +84,7 @@ export default function PlayerPage() {
         </Link>
         <div className="flex items-center gap-2">
           {/* Mobile: tap logo 3× quickly to unlock A.R.I.A. */}
-          <img src={logoUrl} alt="JoyedTiers" className="h-8 w-auto object-contain select-none" style={{ imageRendering: "pixelated", WebkitTapHighlightColor: "transparent" }} onClick={() => (window as any).__ariaLogoTap?.()} />
+          <img src={logoUrl} alt="JoyedTiers" className="h-8 w-auto object-contain select-none" style={{ imageRendering: "pixelated", WebkitTapHighlightColor: "transparent" }} onClick={() => (window as any).__ariaLogoTap?.("corner")} />
         </div>
       </div>
     </header>

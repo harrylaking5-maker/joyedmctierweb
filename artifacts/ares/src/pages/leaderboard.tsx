@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MODES, SUB_MODES, TIER_COLORS, TIER_BORDER_GLOW, EU_COUNTRIES, type ModeKey, type SubModeKey } from "@/lib/tiers";
 import { Trophy, Crown, Swords, Star, Zap, Server, Shield, Menu, Copy, Check, Sword, FlaskConical, Gem, Axe, Sparkles, Hammer, Target, Search, X, MessageCircle, Info, FileText, BowArrow, Wind } from "lucide-react";
 import logoUrl from "@assets/JTlogoNEW.png";
-import heroLogoUrl from "@assets/JTlogoNEW.png";
+import heroLogoUrl from "@assets/joyedtier.png";
 import CookieBanner from "@/components/CookieBanner";
  
 type TabKey = ModeKey | "overview";
@@ -176,7 +176,9 @@ function PlayerSearch() {
 }
  
 function ModeLeaderboard({ mode }: { mode: ModeKey }) {
-  const { data, isLoading, isError } = useGetLeaderboard();
+  const { data, isLoading, isError } = useGetLeaderboard(mode, undefined, {
+    query: { queryKey: getGetLeaderboardQueryKey(mode) },
+  });
   if (isLoading) return <LeaderboardSkeleton />;
   if (isError || !data) return <div className="text-center py-24 text-muted-foreground"><p className="text-sm">Failed to load leaderboard.</p></div>;
   const entries = data.entries ?? [];
@@ -235,7 +237,9 @@ function ModeLeaderboard({ mode }: { mode: ModeKey }) {
 }
  
 function OverviewLeaderboard() {
-  const { data, isLoading, isError } = useGetOverviewLeaderboard();
+  const { data, isLoading, isError } = useGetOverviewLeaderboard(undefined, {
+    query: { queryKey: getGetOverviewLeaderboardQueryKey() },
+  });
   if (isLoading) return <LeaderboardSkeleton />;
   if (isError || !data) return <div className="text-center py-24 text-muted-foreground"><p className="text-sm">Failed to load overview.</p></div>;
   const entries = data.entries ?? [];
@@ -815,8 +819,8 @@ export default function LeaderboardPage() {
       <header className="glass-header sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2.5 flex-shrink-0">
-            {/* Mobile: tap logo 3× quickly to unlock A.R.I.A. */}
-            <img src={logoUrl} alt="JoyedTiers" className="h-7 w-auto object-contain select-none" style={{ imageRendering: "pixelated", WebkitTapHighlightColor: "transparent" }} onClick={() => (window as any).__ariaLogoTap?.()} />
+            {/* Mobile: tap this corner logo 2×, then the hero logo below 3×, then this one 2× again to unlock A.R.I.A. */}
+            <img src={logoUrl} alt="JoyedTiers" className="h-7 w-auto object-contain select-none" style={{ imageRendering: "pixelated", WebkitTapHighlightColor: "transparent" }} onClick={() => (window as any).__ariaLogoTap?.("corner")} />
             <span className="font-black text-sm tracking-tight text-foreground">JoyedTiers</span>
           </div>
           <nav className="hidden sm:flex items-center gap-0.5">
@@ -837,7 +841,7 @@ export default function LeaderboardPage() {
       <section className="relative z-10 pt-10 pb-8 sm:pt-12 sm:pb-10 text-center overflow-hidden">
         <div className="hero-glow-ring" aria-hidden />
         <div className="relative">
-          <div className="hero-logo-wrap mx-auto" onClick={() => (window as any).__ariaLogoTap?.()} style={{ cursor: "default", WebkitTapHighlightColor: "transparent" }}>
+          <div className="hero-logo-wrap mx-auto" onClick={() => (window as any).__ariaLogoTap?.("middle")} style={{ cursor: "default", WebkitTapHighlightColor: "transparent" }}>
             <img
               src={heroLogoUrl}
               alt="JoyedTiers"
