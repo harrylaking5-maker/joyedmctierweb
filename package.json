@@ -1,0 +1,14 @@
+{
+  "name": "joyedmctierweb",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n api,ares -c cyan,magenta \"cd artifacts/api-server && PORT=10001 npm run dev\" \"cd artifacts/ares && VITE_API_URL=http://localhost:10001 npm run dev\"",
+    "dev:setup": "npm install && cd artifacts/api-server && npm install && cd ../ares && npm install",
+    "dev:api": "cd artifacts/api-server && PORT=10001 npm run dev",
+    "dev:ares": "cd artifacts/ares && VITE_API_URL=http://localhost:10001 npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,395 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(255,255,255,.08);
+  --badge-outline: rgba(255,255,255,.05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255,255,255,.04);
+  --elevate-2: rgba(255,255,255,.09);
+
+  --background: 220 16% 6%;
+  --foreground: 215 20% 92%;
+  --border: 220 14% 14%;
+  --card: 220 16% 9%;
+  --card-foreground: 215 20% 90%;
+  --card-border: 220 14% 14%;
+  --sidebar: 220 16% 7%;
+  --sidebar-foreground: 215 20% 88%;
+  --sidebar-border: 220 14% 12%;
+  --sidebar-primary: 204 90% 54%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 16% 11%;
+  --sidebar-accent-foreground: 215 20% 80%;
+  --sidebar-ring: 204 90% 54%;
+  --popover: 220 16% 8%;
+  --popover-foreground: 215 20% 90%;
+  --popover-border: 220 14% 16%;
+  --primary: 204 90% 54%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 13%;
+  --secondary-foreground: 215 16% 76%;
+  --muted: 220 14% 11%;
+  --muted-foreground: 215 12% 44%;
+  --accent: 204 90% 54%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 68% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 220 14% 16%;
+  --ring: 204 90% 54%;
+  --chart-1: 204 90% 54%;
+  --chart-2: 142 65% 44%;
+  --chart-3: 38 88% 50%;
+  --chart-4: 268 85% 62%;
+  --chart-5: 0 68% 50%;
+
+  --app-font-sans: 'Inter', 'DM Sans', system-ui, sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius: 0.5rem;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.5);
+  --shadow: 0 2px 8px rgba(0,0,0,.55);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.6);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.65);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,.75);
+  --shadow-2xl: 0 24px 64px rgba(0,0,0,.85);
+  --shadow-2xs: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-xs: 0 1px 3px rgba(0,0,0,.45);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --primary-border: hsl(var(--primary));
+  --secondary-border: hsl(var(--secondary));
+  --muted-border: hsl(var(--muted));
+  --accent-border: hsl(var(--accent));
+  --destructive-border: hsl(var(--destructive));
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply font-sans antialiased bg-background text-foreground; font-size: 16px; }
+  html { color-scheme: dark; }
+}
+
+/* ── Subtle background texture ───────────────────────────── */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-orb-3 {
+  position: absolute;
+  width: 1200px;
+  height: 800px;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,.04) 0%, transparent 60%);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.glass-header {
+  background: rgba(10, 13, 20, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.hero-glow-ring {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(56,189,248,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-logo-wrap { position: relative; width: fit-content; }
+.hero-logo-halo { display: none; }
+.hero-logo-halo-2 { display: none; }
+
+.hero-logo {
+  display: block;
+  height: 80px;
+  width: auto;
+  image-rendering: pixelated;
+}
+
+@media (min-width: 640px) { .hero-logo { height: 96px; } }
+@media (min-width: 1024px) { .hero-logo { height: 112px; } }
+
+.hero-title {
+  display: none;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+}
+
+/* ── Panel wrapper — clean single border ─────────────────── */
+.glass-wrap {
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.glass-rainbow-line {
+  height: 1px;
+  background: rgba(255,255,255,.07);
+  flex-shrink: 0;
+}
+
+/* ── Main panel ──────────────────────────────────────────── */
+.glass {
+  background: hsl(var(--card));
+  border: none;
+}
+
+/* ── Individual rows ─────────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,.032);
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 0.375rem;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255,255,255,.055);
+  border-color: rgba(255,255,255,.1);
+  transform: none;
+}
+
+/* ── Top-3 accent ────────────────────────────────────────── */
+.glass-card.row-rank-1 {
+  border-left: 2px solid rgba(251,191,36,.7);
+  background: rgba(251,191,36,.04);
+}
+.glass-card.row-rank-1:hover { background: rgba(251,191,36,.07); }
+
+.glass-card.row-rank-2 {
+  border-left: 2px solid rgba(203,213,225,.4);
+  background: rgba(203,213,225,.025);
+}
+.glass-card.row-rank-2:hover { background: rgba(203,213,225,.045); }
+
+.glass-card.row-rank-3 {
+  border-left: 2px solid rgba(251,146,60,.55);
+  background: rgba(251,146,60,.03);
+}
+.glass-card.row-rank-3:hover { background: rgba(251,146,60,.06); }
+
+/* ── HT1 row ─────────────────────────────────────────────── */
+.row-ht1 {
+  background: rgba(251,191,36,.045) !important;
+  border-color: rgba(251,191,36,.22) !important;
+}
+.row-ht1:hover {
+  background: rgba(251,191,36,.07) !important;
+}
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.glass-tabs {
+  background: rgba(255,255,255,.028);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 0.5rem;
+}
+
+.glass-tab-active {
+  background: rgba(56,189,248,.12);
+  border: 1px solid rgba(56,189,248,.28);
+  color: #7dd3fc;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+.glass-tabs button {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+}
+
+/* ── Rank badges ─────────────────────────────────────────── */
+.rank-1, .rank-2, .rank-3 {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+}
+
+.rank-1 {
+  background: rgba(251,191,36,.12);
+  border: 1px solid rgba(251,191,36,.35);
+  color: #fbbf24;
+}
+.rank-2 {
+  background: rgba(203,213,225,.08);
+  border: 1px solid rgba(203,213,225,.28);
+  color: #cbd5e1;
+}
+.rank-3 {
+  background: rgba(251,146,60,.1);
+  border: 1px solid rgba(251,146,60,.35);
+  color: #fb923c;
+}
+
+/* ── Typography overrides: use Inter everywhere ──────────── */
+body, .glass-card, .glass, .glass-wrap, .glass-header,
+.glass-tabs, nav, h1, h2, h3, p, span, div, button, a {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Section headings */
+.glass h2, .glass-wrap h2 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.4 !important;
+}
+
+.glass h2 + p, .glass-wrap h2 + p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+}
+
+/* Player names */
+.glass-card .font-bold {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* Mono numbers — keep JetBrains Mono */
+.glass-card .font-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Header brand */
+.glass-header .font-black {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Utility */
+.font-mc { font-family: 'Inter', sans-serif; font-weight: 800; }
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+.lb-scroll::-webkit-scrollbar { width: 4px; }
+.lb-scroll::-webkit-scrollbar-track { background: transparent; }
+.lb-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+.lb-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.18); }
+
+.tabs-scroll::-webkit-scrollbar { height: 0; }
+
+@layer utilities {
+  input[type="search"]::-webkit-search-cancel-button { @apply hidden; }
+  .no-default-hover-elevate {}
+  .no-default-active-elevate {}
+  .toggle-elevate::before, .toggle-elevate-2::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  .toggle-elevate.toggle-elevated::before { background-color: var(--elevate-2); }
+  .border.toggle-elevate::before { inset: -1px; }
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) { position: relative; z-index: 0; }
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: 999;
+  }
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after { background-color: var(--elevate-1); }
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after { background-color: var(--elevate-2); }
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after { inset: -1px; }
+}
